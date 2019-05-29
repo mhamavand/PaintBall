@@ -7,25 +7,13 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
-    public int count = 0;
-   private void Update()
-    {
-        if ((count = 10) != 0)
-        {
-            Debug.Log("player Won!"); 
-        }
-      else
-      {
-          Debug.Log("Player lost!");
-      }
-    }
 
-    /*public static GameManager instance = null;
+    public static GameManager instance = null;
 
-    private bool[] goodQuad;
-    private int Score;
+    private List<bool> goodQuad  = new List<bool>();
+    private int score;
 
-    private bool[] badQuad;
+    private List<bool> badQuad = new List<bool>();
     // Start is called before the first frame update
     void Start()
     {
@@ -50,17 +38,27 @@ public class GameManager : MonoBehaviour
         
     }
 
-
-    public void QuadCollided(QuadScript quadScript)
+    public int AddGoodQuad()
     {
-        if (quadScript.isGood == true)
+        goodQuad.Add(false);;
+        return goodQuad.Count;
+    }
+    public int AddBadQuad()
+    {
+        badQuad.Add(false);
+        return badQuad.Count;
+    }
+
+    public void QuadCollided(bool isGood, int id)
+    {
+        if (isGood)
         {
-            Score += 1;
+            goodQuad[id - 1] = true;
         }
-        else if (quadScript.isGood == false)
+        else
         {
-            Score -= 1;
+            badQuad[id - 1] = true;
         }
-    }*/
+    }
 
 }
