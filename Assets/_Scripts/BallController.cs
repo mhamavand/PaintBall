@@ -15,9 +15,17 @@ public class BallController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+<<<<<<< HEAD
+        float h= Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+=======
   
     }
+>>>>>>> refs/remotes/origin/master
 
+        Vector3 movement = new Vector3(h, 0, v);
+        rbody.AddForce(movement * speed);
+    }
 }
